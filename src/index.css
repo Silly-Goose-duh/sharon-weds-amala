@@ -840,40 +840,6 @@ button, input, textarea { font: inherit; }
 }
 
 /* ─── RSVP + CONTACT ─── */
-.rsvp-contact-section {
-  padding: 3rem 1.5rem 5rem;
-}
-
-.rsvp-contact-inner {
-  max-width: 900px;
-  margin: 0 auto;
-  display: grid;
-  gap: 3rem;
-}
-
-/* ─── CONTACT CARD ─── */
-.contact-card {
-  padding: 2rem;
-  border-radius: var(--radius-lg);
-  background: var(--card-bg);
-  border: 1px solid var(--border);
-  backdrop-filter: blur(10px);
-  text-align: center;
-}
-
-.contact-card h3 {
-  font-family: var(--serif);
-  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-}
-
-.contact-card p {
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  margin-bottom: 1.5rem;
-}
-
 .contact-number {
   display: inline-flex;
   align-items: center;
@@ -1023,10 +989,6 @@ button, input, textarea { font: inherit; }
 
   .map-container {
     height: 220px;
-  }
-
-  .contact-card {
-    padding: 1.5rem;
   }
 
   .theme-toggle {

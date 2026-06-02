@@ -1,6 +1,4 @@
-import type { AppMode } from './types/rsvp'
-
-function createContent(mode: AppMode) {
+function createContent() {
   const base = {
     coupleDisplay: 'Sharon & Amala',
     heroSubtitle: 'A church wedding wrapped in grace, family, and golden daylight.',
@@ -52,105 +50,23 @@ function createContent(mode: AppMode) {
     churchCoords: { lat: 8.345, lng: 77.152 },
   }
 
-  if (mode === 'full') {
-    return {
-      ...base,
-      events: [
-        {
-          badge: 'Main Ceremony',
-          title: 'Wedding Ceremony',
-          description:
-            'A sacred ceremony surrounded by prayer, family, and the people who have shaped their story.',
-          date: 'Wednesday, 8 July 2026',
-          time: '10:30 AM',
-          venue: "St. Peter's Forane Church, Parassala, Thiruvananthapuram",
-          mapLink:
-            'https://www.google.com/maps/search/?api=1&query=St.+Peter%27s+Forane+Church+Parassala+Thiruvananthapuram',
-          calendarStart: '20260708T050000Z',
-          calendarDuration: 1,
-        },
-        {
-          badge: 'Celebration',
-          title: 'Reception',
-          description:
-            'A warm gathering of blessings, photographs, smiles, and celebration after the ceremony.',
-          date: 'Wednesday, 8 July 2026',
-          time: 'After the ceremony',
-          venue: 'GS Convention Centre, Kurumkutty, Parassala',
-          mapLink:
-            'https://www.google.com/maps/search/?api=1&query=GS+Convention+Centre+Kurumkutty+Parassala',
-          calendarStart: '20260708T073000Z',
-          calendarDuration: 2,
-        },
-        {
-          badge: 'Post-Marriage Reception',
-          title: 'Post-Marriage Reception',
-          description:
-            'A continued celebration with family and friends, joyfully hosted after the wedding day.',
-          date: 'Thursday, 9 July 2026',
-          time: 'Evening',
-          venue: 'Bishop Pereira Hall, Palayam, Thiruvananthapuram',
-          mapLink:
-            'https://www.google.com/maps/search/?api=1&query=Bishop+Pereira+Hall+Palayam+Thiruvananthapuram',
-          calendarStart: '20260709T123000Z',
-          calendarDuration: 3,
-        },
-      ],
-      schedule: [
-        {
-          time: '09:45 AM',
-          title: 'Guests Arrive',
-          text: 'Please arrive a little early to settle in, meet family, and find your seat.',
-        },
-        {
-          time: '10:30 AM',
-          title: 'Wedding Ceremony',
-          text: 'The vows and blessings begin at the church in a moment of prayer and joy.',
-        },
-        {
-          time: 'Afterward',
-          title: 'Reception & Blessings',
-          text: 'Join the families for congratulations, photographs, and a shared celebration.',
-        },
-        {
-          time: '9 Jul, Evening',
-          title: 'Post-Marriage Reception',
-          text: 'A second gathering of joy at Bishop Pereira Hall in Palayam, Trivandrum.',
-        },
-      ],
-    }
-  }
-
   return {
     ...base,
-      events: [
-        {
-          badge: 'Main Ceremony',
-          title: 'Wedding Ceremony',
-          description:
-            'A sacred ceremony surrounded by prayer, family, and the people who have shaped their story.',
-          date: 'Wednesday, 8 July 2026',
-          time: '10:30 AM',
-          venue: "St. Peter's Forane Church, Parassala, Thiruvananthapuram",
-          mapLink:
-            'https://www.google.com/maps/search/?api=1&query=St.+Peter%27s+Forane+Church+Parassala+Thiruvananthapuram',
-          calendarStart: '20260708T050000Z',
-          calendarDuration: 1,
-        },
-        {
-          badge: 'Celebration',
-          title: 'Reception',
-          description:
-            'A warm gathering of blessings, photographs, smiles, and celebration after the ceremony.',
-          date: 'Wednesday, 8 July 2026',
-          time: 'After the ceremony',
-          venue: 'GS Convention Centre, Kurumkutty, Parassala',
-          mapLink:
-            'https://www.google.com/maps/search/?api=1&query=GS+Convention+Centre+Kurumkutty+Parassala',
-          calendarStart: '20260708T073000Z',
-          calendarDuration: 2,
-        },
-      ],
+    events: [
+      {
+        badge: 'Main Ceremony',
+        title: 'Wedding Ceremony',
+        description:
+          'A sacred ceremony surrounded by prayer, family, and the people who have shaped their story.',
+        date: 'Wednesday, 8 July 2026',
+        time: '10:30 AM',
+        venue: "St. Peter's Forane Church, Parassala, Thiruvananthapuram",
+        mapLink:
+          'https://www.google.com/maps/search/?api=1&query=St.+Peter%27s+Forane+Church+Parassala+Thiruvananthapuram',
+        calendarStart: '20260708T050000Z',
+        calendarDuration: 1,
+      },
+    ],
     schedule: [
       {
         time: '09:45 AM',
@@ -162,14 +78,8 @@ function createContent(mode: AppMode) {
         title: 'Wedding Ceremony',
         text: 'The vows and blessings begin at the church in a moment of prayer and joy.',
       },
-      {
-        time: 'Afterward',
-        title: 'Reception & Blessings',
-        text: 'Join the families for congratulations, photographs, and a shared celebration.',
-      },
     ],
   }
 }
 
-const mode = ((import.meta as any).env?.VITE_APP_MODE ?? 'full') as AppMode
-export const siteContent = createContent(mode)
+export const siteContent = createContent()

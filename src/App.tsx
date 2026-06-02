@@ -278,6 +278,18 @@ export default function App() {
           </div>
         </section>
 
+        {/* ─── RSVP ─── */}
+        <section className="glow-section" id="rsvp">
+          <div className="glow-section-inner">
+            <SectionTitle
+              eyebrow="RSVP"
+              title="Reply with ease."
+              text="Confirm your participation directly here."
+            />
+            <RsvpForm />
+          </div>
+        </section>
+
         {/* ─── GALLERY ─── */}
         <section className="gallery-section" id="gallery">
           <SectionTitle
@@ -302,12 +314,27 @@ export default function App() {
           </div>
         </section>
 
+        {/* ─── CONTACT ─── */}
+        <section className="glow-section" id="contact">
+          <div className="glow-section-inner contact-stack">
+            <SectionTitle
+              eyebrow="Contact"
+              title="With love from the families."
+              text={siteContent.contact.note}
+            />
+            <a className="contact-number" href={`tel:${siteContent.contact.people[0].phone}`}>
+              <Heart size={16} />
+              {siteContent.contact.people[0].label}: {siteContent.contact.people[0].phone}
+            </a>
+          </div>
+        </section>
+
         {/* ─── MAP ─── */}
         <section className="map-section" id="map">
           <SectionTitle
             eyebrow="Location"
             title="Find your way."
-            text="The ceremony and reception venues are just moments apart."
+            text="The ceremony takes place at St. Peter's Forane Church."
           />
 
           <div className="map-container">
@@ -317,65 +344,6 @@ export default function App() {
               loading="lazy"
               style={{ width: '100%', height: '100%', border: 0 }}
             />
-          </div>
-
-          <div className="map-container" style={{ marginTop: '1rem', height: '200px' }}>
-            <iframe
-              title="Reception location"
-              src="https://www.openstreetmap.org/export/embed.html?bbox=77.140%2C8.340%2C77.165%2C8.360&layer=mapnik&marker=8.348%2C77.153"
-              loading="lazy"
-              style={{ width: '100%', height: '100%', border: 0 }}
-            />
-          </div>
-
-          {siteContent.events.length > 2 && (
-            <div className="map-container" style={{ marginTop: '1rem', height: '200px' }}>
-              <iframe
-                title="Post-Marriage Reception location"
-                src="https://www.openstreetmap.org/export/embed.html?bbox=76.940%2C8.495%2C76.962%2C8.515&layer=mapnik&marker=8.505%2C76.952"
-                loading="lazy"
-                style={{ width: '100%', height: '100%', border: 0 }}
-              />
-            </div>
-          )}
-        </section>
-
-        {/* ─── RSVP + CONTACT ─── */}
-        <section className="rsvp-contact-section" id="rsvp">
-          <div className="rsvp-contact-inner">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.7 }}
-            >
-              <SectionTitle
-                eyebrow="RSVP"
-                title="Reply with ease."
-                text="Confirm your participation directly here."
-              />
-              <RsvpForm />
-            </motion.div>
-
-            <motion.div
-              className="contact-card"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              id="contact"
-            >
-              <Heart size={20} color="var(--accent)" style={{ marginBottom: '0.5rem' }} />
-              <h3>With love from the families.</h3>
-              <p>{siteContent.contact.note}</p>
-              <p style={{ fontSize: '0.85rem', color: 'var(--muted)', marginBottom: '1.5rem' }}>
-                For any arrival questions or coordination on the day, feel free to reach out.
-              </p>
-              <a className="contact-number" href={`tel:${siteContent.contact.people[0].phone}`}>
-                <Heart size={16} />
-                {siteContent.contact.people[0].label}: {siteContent.contact.people[0].phone}
-              </a>
-            </motion.div>
           </div>
         </section>
       </main>
