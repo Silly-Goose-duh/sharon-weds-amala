@@ -1,16 +1,24 @@
-# Sharon & Amala Wedding Website
+# Sharon Weds Amala
 
-Light-themed wedding website for Sharon and Amala, built with `React + TypeScript + Vite`.
+A wedding reservation website for Sharon & Amala — built to share with WhatsApp groups so guests can RSVP instantly.
 
-## Included
+## Tech Stack
 
-- Animated loading screen with swipe-style reveal
-- Full-screen hero with photo backdrop
-- Event details and live wedding countdown
-- Schedule timeline
-- Infinite scrolling gallery
-- In-page RSVP form backed by Supabase
-- Contact section for guest coordination
+| Layer | Choice |
+|---|---|
+| **Frontend** | React 19 + TypeScript + Vite |
+| **Animations** | Framer Motion |
+| **Styling** | Custom CSS with theme system (dark/light/emerald/rose) |
+| **RSVP Database** | Supabase (PostgreSQL) — guest name, party size, attendance, food preference, affiliation (bride/groom/both), message |
+| **Deployment** | Vercel (two variants: full 3-event version & simple 2-event version) |
+| **Images** | Sharp (batch conversion to WebP) |
+| **Maps** | OpenStreetMap embeds (no API key needed) |
+| **Calendar** | Google Calendar link (opens pre-filled event on RSVP) |
+
+## Live Sites
+
+- Full version (3 events): [sharonwedsamala.vercel.app](https://sharonwedsamala.vercel.app)
+- Simple version (2 events): [weddingcardsa.vercel.app](https://weddingcardsa.vercel.app)
 
 ## Run Locally
 
@@ -19,25 +27,29 @@ npm install
 npm run dev
 ```
 
-Local preview: `http://127.0.0.1:4173` when started with `npm run dev -- --host 127.0.0.1 --port 4173`
-
 ## Supabase Setup
 
 1. Copy `.env.example` to `.env`.
 2. Fill in `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`.
-3. Run the SQL inside `supabase/schema.sql` in your Supabase project.
+3. Run the SQL inside `supabase/schema.sql` in your Supabase project SQL Editor.
 
-## Build
+## Project Structure
 
-```bash
-npm run build
-npm run lint
-```
+- `src/App.tsx` — page layout, sections, theme toggle, loader
+- `src/content.ts` — all wedding copy, dates, gallery, events (switches by `VITE_APP_MODE`)
+- `src/components/RsvpForm.tsx` — RSVP form with affiliation picker + Google Calendar redirect
+- `src/lib/supabase.ts` — direct fetch to Supabase REST API (no SDK)
+- `src/lib/calendar.ts` — Google Calendar URL builder utility
+- `src/types/rsvp.ts` — TypeScript types for RSVP data
+- `supabase/schema.sql` — full database schema with RLS policies
 
-## Main Files
+## Features
 
-- `src/App.tsx`: page structure and motion flow
-- `src/content.ts`: editable wedding copy, dates, links, and gallery data
-- `src/components/RsvpForm.tsx`: RSVP form UI and submit flow
-- `src/lib/supabase.ts`: Supabase client and insert helper
-- `supabase/schema.sql`: RSVP table schema and policy
+- Animated loading screen with liquid swirl reveal
+- Countdown timer to the wedding day
+- Event cards with maps for each venue
+- Creative schedule timeline with icons
+- Infinite marquee gallery
+- Theme switcher with lock
+- RSVP form with Google Calendar auto-redirect on confirmation
+- Two deployment modes via `VITE_APP_MODE` env var
