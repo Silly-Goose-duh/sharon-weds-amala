@@ -299,18 +299,11 @@ export default function App() {
           />
 
           <div className="gallery-grid">
-            {siteContent.gallery.map((img, i) => {
-              const mod = i % 9;
-              let cls = 'gallery-card';
-              if (mod === 0) cls += ' gallery-card-big';
-              else if (mod === 3 || mod === 7) cls += ' gallery-card-wide';
-              else if (mod === 5) cls += ' gallery-card-tall';
-              return (
-                <figure className={cls} key={img.src}>
-                  <img src={img.src} alt={img.alt} loading="lazy" />
-                </figure>
-              );
-            })}
+            {siteContent.gallery.map((img) => (
+              <figure className="gallery-card" key={img.src}>
+                <img src={img.src} alt={img.alt} loading="lazy" />
+              </figure>
+            ))}
           </div>
         </section>
 
@@ -334,7 +327,7 @@ export default function App() {
           <SectionTitle
             eyebrow="Location"
             title="Find your way."
-            text="The ceremony takes place at St. Peter's Forane Church."
+            text="Maps for each venue to help you navigate."
           />
 
           <div className="map-container">
@@ -345,6 +338,26 @@ export default function App() {
               style={{ width: '100%', height: '100%', border: 0 }}
             />
           </div>
+
+          <div className="map-container" style={{ marginTop: '1rem', height: '200px' }}>
+            <iframe
+              title="Reception location"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=77.140%2C8.340%2C77.165%2C8.360&layer=mapnik&marker=8.348%2C77.153"
+              loading="lazy"
+              style={{ width: '100%', height: '100%', border: 0 }}
+            />
+          </div>
+
+          {siteContent.events.length > 2 && (
+            <div className="map-container" style={{ marginTop: '1rem', height: '200px' }}>
+              <iframe
+                title="Post-Marriage Reception location"
+                src="https://www.openstreetmap.org/export/embed.html?bbox=76.940%2C8.495%2C76.962%2C8.515&layer=mapnik&marker=8.505%2C76.952"
+                loading="lazy"
+                style={{ width: '100%', height: '100%', border: 0 }}
+              />
+            </div>
+          )}
         </section>
       </main>
     </>
