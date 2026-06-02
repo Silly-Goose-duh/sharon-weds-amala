@@ -39,9 +39,7 @@ function getCountdownParts(): CountdownParts {
   }
 }
 
-const galleryImages = [...siteContent.gallery, ...siteContent.gallery]
-const galleryImagesRev = [...siteContent.gallery].reverse()
-const galleryImagesRev2 = [...galleryImagesRev, ...galleryImagesRev]
+
 
 export default function App() {
   const [showLoader, setShowLoader] = useState(true)
@@ -285,44 +283,22 @@ export default function App() {
           <SectionTitle
             eyebrow="Gallery"
             title="Moments already full of joy."
-            text="A flowing stream of memories, gliding like an unfolding album."
+            text="A collection of memories from the celebration."
           />
 
-          <div className="gallery-track-wrap">
-            <motion.div
-              className="gallery-track"
-              animate={{ x: [0, -siteContent.gallery.length * 19 * 16] }}
-              transition={{
-                duration: 40,
-                repeat: Infinity,
-                ease: 'linear',
-                repeatType: 'loop',
-              }}
-            >
-              {galleryImages.map((img, i) => (
-                <figure className="gallery-card" key={`${img.src}-${i}`}>
+          <div className="gallery-grid">
+            {siteContent.gallery.map((img, i) => {
+              const mod = i % 9;
+              let cls = 'gallery-card';
+              if (mod === 0) cls += ' gallery-card-big';
+              else if (mod === 3 || mod === 7) cls += ' gallery-card-wide';
+              else if (mod === 5) cls += ' gallery-card-tall';
+              return (
+                <figure className={cls} key={img.src}>
                   <img src={img.src} alt={img.alt} loading="lazy" />
                 </figure>
-              ))}
-            </motion.div>
-          </div>
-
-          <div className="gallery-track-wrap" style={{ marginTop: '-0.5rem' }}>
-            <motion.div
-              className="gallery-track-2"
-              animate={{ x: [0, siteContent.gallery.length * 15 * 16] }}
-              transition={{
-                duration: 35,
-                repeat: Infinity,
-                ease: 'linear',
-              }}
-            >
-              {galleryImagesRev2.map((img, i) => (
-                <figure className="gallery-card" key={`rev-${img.src}-${i}`}>
-                  <img src={img.src} alt={img.alt} loading="lazy" />
-                </figure>
-              ))}
-            </motion.div>
+              );
+            })}
           </div>
         </section>
 

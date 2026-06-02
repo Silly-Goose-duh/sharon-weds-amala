@@ -754,44 +754,19 @@ button, input, textarea { font: inherit; }
 /* ─── GALLERY ─── */
 .gallery-section {
   padding: 5rem 0;
-  overflow: hidden;
 }
 
-.gallery-track-wrap {
-  position: relative;
-  overflow: hidden;
-  padding: 1.5rem 0;
-}
-
-.gallery-track-wrap::before,
-.gallery-track-wrap::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 80px;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.gallery-track-wrap::before {
-  left: 0;
-  background: linear-gradient(90deg, var(--page-bg) 0%, transparent 100%);
-}
-
-.gallery-track-wrap::after {
-  right: 0;
-  background: linear-gradient(270deg, var(--page-bg) 0%, transparent 100%);
-}
-
-.gallery-track {
-  display: flex;
-  gap: 1.25rem;
-  width: max-content;
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  grid-auto-rows: 12rem;
 }
 
 .gallery-card {
-  flex: 0 0 18rem;
   border-radius: var(--radius-md);
   overflow: hidden;
   border: 3px solid var(--border-strong);
@@ -804,28 +779,27 @@ button, input, textarea { font: inherit; }
   border-color: var(--accent);
   transform: scale(1.02);
   box-shadow: 0 0 30px var(--accent-glow);
+  z-index: 2;
 }
 
 .gallery-card img {
   width: 100%;
-  aspect-ratio: 3/4;
-  object-fit: cover;
+  height: 100%;
   display: block;
+  object-fit: cover;
 }
 
-.gallery-track-2 {
-  display: flex;
-  gap: 1.25rem;
-  width: max-content;
-  margin-top: 1.25rem;
+.gallery-card-wide {
+  grid-column: span 2;
 }
 
-.gallery-track-2 .gallery-card {
-  flex: 0 0 14rem;
+.gallery-card-tall {
+  grid-row: span 2;
 }
 
-.gallery-track-2 .gallery-card img {
-  aspect-ratio: 4/3;
+.gallery-card-big {
+  grid-column: span 2;
+  grid-row: span 2;
 }
 
 /* ─── MAP ─── */
@@ -1042,12 +1016,9 @@ button, input, textarea { font: inherit; }
     padding: 1.25rem 1.5rem;
   }
 
-  .gallery-card {
-    flex: 0 0 14rem;
-  }
-
-  .gallery-track-2 .gallery-card {
-    flex: 0 0 11rem;
+  .gallery-grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 10rem;
   }
 
   .map-container {
@@ -1071,12 +1042,11 @@ button, input, textarea { font: inherit; }
 }
 
 @media (max-width: 480px) {
-  .gallery-card {
-    flex: 0 0 11rem;
-  }
-
-  .gallery-track-2 .gallery-card {
-    flex: 0 0 9rem;
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 8rem;
+    gap: 0.5rem;
+    padding: 0 1rem;
   }
 
   .countdown-unit {
